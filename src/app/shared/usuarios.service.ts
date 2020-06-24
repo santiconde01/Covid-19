@@ -23,7 +23,24 @@ export class UsuariosService {
       });
   }
 
-  getCoffeeOrders() { 
+  updateUser(data) {
+    return
+        this.firestore
+        .collection("Users")
+        .doc(data.payload.doc.id)
+        .set({ completed: true }, { merge: true });
+ }
+
+  getUsers() { 
     return this.firestore.collection("Users").snapshotChanges();
   }
+
+  deleteUser(data) {
+    return
+        this.firestore
+        .collection("Users")
+        .doc(data.payload.doc.id)
+        .delete();
+ }
+  
   }

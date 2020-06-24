@@ -8,15 +8,21 @@ import { UsuariosService } from '../shared/usuarios.service';
 })
 export class ListaUsuariosComponent implements OnInit {
 
-  constructor(private ordersService:UsuariosService) { }
+  constructor(private UsuariosService:UsuariosService) { 
 
-  ngOnInit(): void {
-
-  this.getUsers();}
-      coffeeOrders;   getCoffeeOrders = () =>
-          this.ordersService
-          .getCoffeeOrders()
-          .subscribe(res =>(this.coffeeOrders = res));
+    
   }
+
+    ngOnInit() {this.getUsers();}
+      user: import("@angular/fire/firestore").DocumentChangeAction<unknown>[];   getUsers = () =>
+          this.UsuariosService
+          .getUsers()
+          .subscribe(res =>(this.user = res));
+
+          markCompleted = data => 
+    this.UsuariosService.updateUser(data);
+
+    deleteUser = data => this.UsuariosService.deleteUser(data);
+
 
 }
