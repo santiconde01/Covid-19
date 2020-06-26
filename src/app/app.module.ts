@@ -25,10 +25,8 @@ import { HttpClientModule } from "@angular/common/http";
 // Auth service
 import { AuthService } from "./shared/services/auth.service";
 import { MapaComponent } from './mapa/mapa.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
-import { UsuariosService } from './shared/usuarios.service';
 import { ReactiveFormsModule } from "@angular/forms";
+import { UserListComponent } from './users-list/users-list.component';
 
 
 
@@ -41,8 +39,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     ForgotPasswordComponent,
     VerifyEmailComponent,
     MapaComponent,
-    UsuariosComponent,
-    ListaUsuariosComponent
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +52,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     ReactiveFormsModule
 
   ],
-  providers: [AuthService, UsuariosService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 
