@@ -15,6 +15,6 @@ export class PaisService {
 
 
   getAllPaises() {
-    return this.db.collection('Countries').valueChanges(); // We will use the id in order to perform the update or delete operation.
+    return this.db.collection('Countries').get().toPromise() // We will use the id in order to perform the update or delete operation.
   }
 }
