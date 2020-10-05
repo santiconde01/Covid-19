@@ -16,13 +16,19 @@
 
       <div class="formGroup">
         <input type="password" class="formControl" placeholder="Password" #userPwd required>
-      </div>
+      </div> 
 
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
-      </div>
+              <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Password" #userPwd required>
+              </div> 
 
-      <div class="formGroup">
+          <div class="formGroup">
+            <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+          </div>
+
+     
+     
+          <div class="formGroup">
         <span class="or"><span class="orInner">Or</span></span>
       </div>
 
@@ -33,7 +39,6 @@
           Continue with Google
         </button>
       </div>
-      
     </div>
 
     <div class="redirectToLogin">

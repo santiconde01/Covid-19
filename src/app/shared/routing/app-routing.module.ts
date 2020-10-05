@@ -10,6 +10,7 @@ import { VerifyEmailComponent } from '../../components/verify-email/verify-email
 import { AuthGuard } from "../../shared/guard/auth.guard";
 import { MapaComponent } from 'src/app/mapa/mapa.component';
 import { UserListComponent } from 'src/app/users-list/users-list.component';
+import { PagPrincipalComponent } from 'src/app/pag-principal/pag-principal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -19,9 +20,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'mapa', component: MapaComponent }, 
-  { path: 'crud', component: UserListComponent }, 
-
-
+  { path: 'pagPrincipal', component: PagPrincipalComponent }
+  
 ];
 
 @NgModule({

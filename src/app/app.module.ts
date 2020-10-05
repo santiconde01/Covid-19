@@ -30,6 +30,8 @@ import { AuthService } from "./shared/services/auth.service";
 import { MapaComponent } from './mapa/mapa.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserListComponent } from './users-list/users-list.component';
+import { GraficoComponent } from './grafico/grafico.component';
+import { PagPrincipalComponent } from './pag-principal/pag-principal.component';
 
 
 
@@ -42,7 +44,9 @@ import { UserListComponent } from './users-list/users-list.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     MapaComponent,
-    UserListComponent
+    UserListComponent,
+    GraficoComponent,
+    PagPrincipalComponent
   ],
   imports: [
     BrowserModule,
