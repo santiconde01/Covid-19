@@ -18,8 +18,8 @@ createUser(user: User){
 }
 
 updateUser(user: User){
-  delete user.nombreUsuario;
-  this.firestore.doc('users/' + user.nombreUsuario).update(user);
+  delete user.id;
+  this.firestore.doc('users/' + user.id).update(user);
 }
 
 deleteUser(id: string){
