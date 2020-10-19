@@ -1,5 +1,5 @@
 export class User {
     id: String;
-    nombreUsuario: String; 
+    nombreUsuario: String;   
     contrasena: String; 
 }

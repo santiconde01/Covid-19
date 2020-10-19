@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,  } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -32,10 +32,10 @@ export class MapaComponent implements OnInit {
   }
 
    async CargarPaises(){
-        let datos = await this.PaisService.getAllPaises();
-        let data = [];
+        var datos = await this.PaisService.getAllPaises();
+        var data = [];
         datos.docs.forEach(ref =>  {
-          data.push({ Country: ref["Country"], TotalConfirmed: ref["TotalConfirmed"], TotalDeaths: ref["TotalDeaths"], Slug: ref["Slug"] })
+          data.push({ id: ref.data()["CountryCode"], value: ref.data()["TotalConfirmed"], size: ref.data()["TotalDeaths"], title: ref.data()["Country"] })
         });
 
         // connect the data with the map
@@ -43,21 +43,23 @@ export class MapaComponent implements OnInit {
         this.chart.geoData(this.world);
 
         // specify the chart type and set the series
-        let series = this.chart.choropleth(data);
-        // variable to store data this will be used for bubbles
-        let bubbleData = [];
+        var series = this.chart.choropleth(data);
 
-        console.log(data.length);
+
+        // variable to store data this will be used for bubbles
+        var bubbleData = [];
 
         // store only the countries this have at least 1 death
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].size > 0) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].size >= 0) {
             bubbleData.push(data[i]);
           }
         };
 
+        console.log(bubbleData);
+
         // create a series for bubbles
-        let series_1 = this.chart.bubble(bubbleData);
+        var series_1 = this.chart.bubble(bubbleData);
 
         // set the maximum size of the bubble
         this.chart.maxBubbleSize(25);
@@ -77,7 +79,7 @@ export class MapaComponent implements OnInit {
         this.chart.title("COVID-19 PARADIGMA MUNDIAL");
 
         // color scale ranges
-        let ocs = anychart.scales.ordinalColor([
+        var ocs = anychart.scales.ordinalColor([
           { less: 99 },
           { from: 100, to: 999 },
           { from: 1000, to: 9999 },
@@ -112,7 +114,6 @@ export class MapaComponent implements OnInit {
 
 
         this.chart.listen("pointDblClick",function(e) {
-          console.log(e);
         });
 
         this.chart.container(this.container.nativeElement);
