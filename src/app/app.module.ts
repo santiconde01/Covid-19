@@ -62,7 +62,7 @@ import { PostComponent } from './Pag_principal/post/post.component';
     ComoProtegerseComponent,
     ConsejosPoblacionComponent,
     IndexComponent,
-    PostComponent
+    PostComponent,
   ],
   imports: [
     BrowserModule,

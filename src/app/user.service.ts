@@ -9,12 +9,16 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  getUser(user: User ){
+    return this.firestore.doc('users/').snapshotChanges();
+  }
+
   getUsers() {
     return this.firestore.collection('Users').snapshotChanges();
 }
 
 createUser(user: User){
-  return this.firestore.collection('Users').add(user);
+  return this.firestore.collection('users').add(user);
 }
 
 updateUser(user: User){
@@ -23,6 +27,6 @@ updateUser(user: User){
 }
 
 deleteUser(id: string){
-  this.firestore.doc('Users/' + id).delete();
+  this.firestore.doc('users/' + id).delete();
 }
 }
