@@ -8,7 +8,6 @@ import { ForgotPasswordComponent } from '../../components/forgot-password/forgot
 import { VerifyEmailComponent } from '../../components/verify-email/verify-email.component';
 
 import { AuthGuard } from "../../shared/guard/auth.guard";
-import { MapaComponent } from 'src/app/mapa/mapa.component';
 import { UserListComponent } from 'src/app/users-list/users-list.component';
 import { PostComponent } from 'src/app/Pag_principal/post/post.component';
 import { AboutComponent } from 'src/app/Pag_principal/about/about.component';
@@ -29,7 +28,6 @@ const routes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'users-list', component: UserListComponent }, 
 
-  { path: 'mapa', component: MapaComponent }, 
   { path: 'post', component: PostComponent }, 
   { path: 'about', component: AboutComponent }, 
   { path: 'como-protegerse', component: ComoProtegerseComponent }, 

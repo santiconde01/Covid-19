@@ -27,7 +27,6 @@ import { HttpClientModule } from "@angular/common/http";
 
 // Auth service
 import { AuthService } from "./shared/services/auth.service";
-import { MapaComponent } from './mapa/mapa.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserListComponent } from './users-list/users-list.component';
 import { GraficoComponent } from './grafico/grafico.component';
@@ -51,7 +50,6 @@ import { PostComponent } from './Pag_principal/post/post.component';
     DashboardComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    MapaComponent,
     UserListComponent,
     GraficoComponent,
     InformacionPaisesComponent,
