@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
+import { Pais } from '../Pais/pais';
 
 @Component({
   selector: 'app-grafico',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GraficoComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private afs: AngularFirestore,  private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getPais("AR");
   }
 
+  getCodigo (){
+  return this.route.snapshot.paramMap.get('pais');
+  }
+
+  public async getPais(countryCode: string) {
+    let pais = await 
+    this.afs.collection('countries').doc(countryCode).get().toPromise();
+    console.log(pais.data);
+    return pais.data();
+  }
 }

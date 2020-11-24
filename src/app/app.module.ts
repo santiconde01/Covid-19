@@ -33,12 +33,11 @@ import { GraficoComponent } from './grafico/grafico.component';
 import { InformacionPaisesComponent } from './Pag_principal/informacion-paises/informacion-paises.component';
 import { InformacionComponent } from './Pag_principal/informacion/informacion.component';
 import { PreguntasYrespuestasComponent } from './Pag_principal/preguntas-yrespuestas/preguntas-yrespuestas.component';
-import { ContactComponent } from './Pag_principal/contact/contact.component';
-import { AboutComponent } from './Pag_principal/about/about.component';
 import { ComoProtegerseComponent } from './Pag_principal/como-protegerse/como-protegerse.component';
 import { ConsejosPoblacionComponent } from './Pag_principal/consejos-poblacion/consejos-poblacion.component';
 import { IndexComponent } from './Pag_principal/index/index.component';
 import { PostComponent } from './Pag_principal/post/post.component';
+import { ForoComponent } from './Pag_principal/foro/foro.component';
 
 
 
@@ -55,12 +54,11 @@ import { PostComponent } from './Pag_principal/post/post.component';
     InformacionPaisesComponent,
     InformacionComponent,
     PreguntasYrespuestasComponent,
-    ContactComponent,
-    AboutComponent,
     ComoProtegerseComponent,
     ConsejosPoblacionComponent,
     IndexComponent,
     PostComponent,
+    ForoComponent,
   ],
   imports: [
     BrowserModule,

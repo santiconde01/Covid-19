@@ -1,27 +1,37 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
+import { Comentario } from 'src/app/Comentario';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(
-    private firestore: AngularFirestore
-  ) {}
+  constructor(private angularFirestore: AngularFirestore) {}
 
-  public create(data: {nombre: string, url: string}) {
-    return this.firestore.collection('cats').add(data);
+  agregarComentario(mensaje: Comentario) {
+    let id = this.angularFirestore.createId();
+    this.angularFirestore.collection('Mensajes').doc(id).set({
+      mensaje: mensaje.mensaje,
+      idUsuario: mensaje.idUsuario,
+      nombreUsuario: mensaje.nombreUsuario,
+      apellidoUsuario: mensaje.apellidoUsuario,
+      paisUsuario: mensaje.paisUsuario,
+      fechaDePublicacion: mensaje.fechaDePublicacion,
+      id: id,
+    });
   }
-  //Obtiene un gato
-  public getCat(documentId: string) {
-    return this.firestore.collection('cats').doc(documentId).snapshotChanges();
+
+  async getComentarios() {
+    return await this.angularFirestore.collection('Mensajes', ref => ref.orderBy('fechaDePublicacion')).get().toPromise();
   }
-  //Obtiene todos los gatos
-  public getCats() {
-    return this.firestore.collection('cats').snapshotChanges();
-  }
-  //Actualiza un gato
-  public updateCat(documentId: string, data: any) {
-    return this.firestore.collection('cats').doc(documentId).set(data);
+
+  borrarComentario(mensaje: Comentario, userId?: string) {
+    this.angularFirestore.collection('Mensajes').doc(mensaje.id).delete();
+    /* if(mensaje.idUsuario == userId){
+      this.angularFirestore.collection('Mensaje').doc(mensaje.id).delete();
+    } */
   }
 }

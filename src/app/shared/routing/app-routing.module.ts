@@ -10,14 +10,14 @@ import { VerifyEmailComponent } from '../../components/verify-email/verify-email
 import { AuthGuard } from "../../shared/guard/auth.guard";
 import { UserListComponent } from 'src/app/users-list/users-list.component';
 import { PostComponent } from 'src/app/Pag_principal/post/post.component';
-import { AboutComponent } from 'src/app/Pag_principal/about/about.component';
 import { ComoProtegerseComponent } from 'src/app/Pag_principal/como-protegerse/como-protegerse.component';
 import { ConsejosPoblacionComponent } from 'src/app/Pag_principal/consejos-poblacion/consejos-poblacion.component';
 import { PreguntasYrespuestasComponent } from 'src/app/Pag_principal/preguntas-yrespuestas/preguntas-yrespuestas.component';
-import { ContactComponent } from 'src/app/Pag_principal/contact/contact.component';
 import { IndexComponent } from 'src/app/Pag_principal/index/index.component';
 import { InformacionPaisesComponent } from 'src/app/Pag_principal/informacion-paises/informacion-paises.component';
 import { InformacionComponent } from 'src/app/Pag_principal/informacion/informacion.component';
+import { GraficoComponent } from 'src/app/grafico/grafico.component';
+import { ForoComponent } from 'src/app/Pag_principal/foro/foro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full'},
@@ -29,14 +29,15 @@ const routes: Routes = [
   { path: 'users-list', component: UserListComponent }, 
 
   { path: 'post', component: PostComponent }, 
-  { path: 'about', component: AboutComponent }, 
   { path: 'como-protegerse', component: ComoProtegerseComponent }, 
   { path: 'consejos-poblacion', component: ConsejosPoblacionComponent }, 
-  { path: 'contact', component: ContactComponent }, 
   { path: 'index', component: IndexComponent }, 
   { path: 'informacion', component: InformacionComponent }, 
   { path: 'informacion-paises', component: InformacionPaisesComponent }, 
   { path: 'preguntasyrespuestas', component: PreguntasYrespuestasComponent }, 
+  { path: 'grafico/:pais', component: GraficoComponent },
+  { path: 'foro', component: ForoComponent,
+  },
 
   
   

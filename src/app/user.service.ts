@@ -9,9 +9,10 @@ export class UserService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getUser(user: User ){
-    return this.firestore.doc('users/').snapshotChanges();
+  getUser(user: User){
+    return this.firestore.doc('users/' + user.id).snapshotChanges();
   }
+
 
   getUsers() {
     return this.firestore.collection('Users').snapshotChanges();
