@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   getUser(){
-    
+    return this.userData;
   }
 
   // Sign up with email/password

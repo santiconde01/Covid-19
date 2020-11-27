@@ -11,25 +11,24 @@ import { Comentario } from 'src/app/Comentario';
 export class FirestoreService {
   constructor(private angularFirestore: AngularFirestore) {}
 
-  agregarComentario(mensaje: Comentario) {
+  async agregarComentario(mensaje: Comentario) :Promise<string>{
     let id = this.angularFirestore.createId();
-    this.angularFirestore.collection('Mensajes').doc(id).set({
+    await this.angularFirestore.collection('Mensajes').doc(id).set({
       mensaje: mensaje.mensaje,
       idUsuario: mensaje.idUsuario,
       nombreUsuario: mensaje.nombreUsuario,
-      apellidoUsuario: mensaje.apellidoUsuario,
-      paisUsuario: mensaje.paisUsuario,
       fechaDePublicacion: mensaje.fechaDePublicacion,
       id: id,
     });
+    return id;
   }
 
   async getComentarios() {
     return await this.angularFirestore.collection('Mensajes', ref => ref.orderBy('fechaDePublicacion')).get().toPromise();
   }
 
-  borrarComentario(mensaje: Comentario, userId?: string) {
-    this.angularFirestore.collection('Mensajes').doc(mensaje.id).delete();
+  async borrarComentario(mensaje: Comentario, userId?: string) {
+    await this.angularFirestore.collection('Mensajes').doc(mensaje.id).delete();
     /* if(mensaje.idUsuario == userId){
       this.angularFirestore.collection('Mensaje').doc(mensaje.id).delete();
     } */

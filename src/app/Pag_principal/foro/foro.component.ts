@@ -20,36 +20,34 @@ export class ForoComponent implements OnInit {
     ]),
   });
 
+  public usuario;
+
+
   public comentarios: Comentario[] = []
   constructor(private firestoreSvc: FirestoreService, private user: UserService) { }
 
   async ngOnInit(): Promise<void> {
+    await this.user.saveUser();
+    this.usuario = JSON.parse(localStorage.getItem('user'));
+    console.log(this.usuario);
     await this.getComentarios();
   }
 
-  agregarComentario(){
-
-    this.user;
-
+  async agregarComentario(){
+    
     const { mensaje } = this.mensajeForm.value;
-    /* let comentario: Comentario = {
+     let comentario: Comentario = {
       mensaje: mensaje,
-      idUsuario: this.usuario.idUsuario,
-      nombreUsuario: this.usuario.nombreUsuario,
-      apellidoUsuario: this.usuario.apellidoUsuario,
-      paisUsuario: this.usuario.paisUsuario,
+      email: this.usuario.email,
+      idUsuario: this.usuario.uid,
+      nombreUsuario: this.usuario.displayName,
       fechaDePublicacion: Date.now(),
-    } */
-    let comentario: Comentario = {
-      mensaje: mensaje,
-      idUsuario: 'this.user.idUsuario',
-      nombreUsuario: 'this.user.nombreUsuario',
-      email: 'this.user.email',
-      fechaDePublicacion: Date.now(),
-      
-    }
-    this.firestoreSvc.agregarComentario(comentario);
+    } 
+   
+    let id = await this.firestoreSvc.agregarComentario(comentario);
+     comentario["id"] = id;
     this.comentarios.push(comentario);
+    console.log(comentario);
   }
 
   async getComentarios(){
@@ -71,6 +69,7 @@ export class ForoComponent implements OnInit {
   }
 
   borrarComentario(comentario: Comentario){
+    console.log(comentario);
     this.firestoreSvc.borrarComentario(comentario);
     let indice = this.comentarios.indexOf(comentario);
     this.comentarios.splice(indice);

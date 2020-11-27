@@ -14,11 +14,7 @@ export class GraficoComponent implements OnInit {
   constructor(private afs: AngularFirestore,  private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getPais("AR");
-  }
-
-  getCodigo (){
-  return this.route.snapshot.paramMap.get('pais');
+    this.getPais("");
   }
 
   public async getPais(countryCode: string) {

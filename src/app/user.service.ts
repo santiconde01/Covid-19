@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from './user.model'
 
@@ -7,10 +8,23 @@ import { User } from './user.model'
 })
 export class UserService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) { }
 
-  getUser(user: User){
-    return this.firestore.doc('users/' + user.id).snapshotChanges();
+  async saveUser(): Promise<void> {
+    this.afAuth.user.subscribe(async (user) => {
+      const dataUser = await this.getUser(user.uid);
+      localStorage.setItem('user', JSON.stringify(dataUser));
+    });
+  }
+
+  public async getUser(id: string) {
+    //Trae de la collection 'users', el documento con el id que se pasa como argumento
+    let user = await this.firestore
+      .collection('users')
+      .doc(id)
+      .get()
+      .toPromise();
+    return user.data();
   }
 
 

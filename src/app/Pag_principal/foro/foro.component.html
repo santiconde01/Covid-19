@@ -1,10 +1,90 @@
-<div class="mt-5" *ngFor='let comentario of comentarios'>
-    <div>{{comentario.nombreUsuario}} {{comentario.apellidoUsuario}}</div>
-    <div>{{comentario.mensaje}}</div>
-    <div>{{getFecha(comentario.fechaDePublicacion) | date: "dd/MM/yyyy"}}</div>
-    <button (click)="borrarComentario(comentario)">Borrar</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Clean Blog - Start Bootstrap Theme</title>
+</head>
+<body>
+  <!-- Page Header -->
+  <header class="masthead" >
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Foro Covid-19</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container" aria-label="Como Protegerse" >
+    <div class="felx-row">
+      <div class="col-lg-8 col-md-10 Centrado">
+        <div class="post-preview">
+          <div class="mt-5" *ngFor='let comentario of comentarios'>
+            <div class="card">
+              <div class="card-header">
+                {{getFecha(comentario.fechaDePublicacion) | date: "dd/MM/yyyy"}}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{comentario.nombreUsuario}}</h5>
+                <p class="card-text">{{comentario.mensaje}}</p>
+                <button (click)="borrarComentario(comentario)">Borrar</button>
+              </div>
+            </div>
+          </div>
+          <form class="mt-5" [formGroup]="mensajeForm" (ngSubmit)="agregarComentario()">
+            <input type="text" class=formControl formControlName="mensaje">
+            <button type="submit" class="btn btnPrimary">Agregar</button>
+          </form> 
+        </div>
+      </div>
+    </div>
   </div>
-  <form class="mt-5" [formGroup]="mensajeForm" (ngSubmit)="agregarComentario()">
-    <input type="text" formControlName="mensaje">
-    <button type="submit">Agregar</button>
-  </form>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Politecnico Modelo</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+</body>
+
+</html>

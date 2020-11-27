@@ -1,7 +1,9 @@
 import { state } from '@angular/animations';
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { GraficoComponent } from 'src/app/grafico/grafico.component';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { PaisService } from '../../Pais/pais.service';
 
@@ -106,19 +108,18 @@ export class IndexComponent implements OnInit {
       .padding(50, 0, 0, 20)
       .paginator(false);
 
-      console.log(document.getElementById("CountryCode"));
-
-
     // tooltip formatting
     series.tooltip().format("Casos confirmados: {%value}");
     series_1.tooltip().format("Muertes: {%size}");
 
-      let that=this;
+    let that=this;
     this.chart.listen("pointDblClick",function() {
-      that.router.navigate(['/grafico/' + series.selected()]);
+      console.log(series.selected(data.entries()));
+      that.router.navigate(['/grafico/' + series.selected(["{%size}"])]);
     });
     this.chart.container(this.container.nativeElement);
      this.chart.draw();    
 }
+
 }
 
